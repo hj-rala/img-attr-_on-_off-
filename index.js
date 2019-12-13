@@ -1,9 +1,17 @@
-$('.mapBtns ul li a').on('hover', function(e){
-		$(this).find('>img').attr('src',function(index, attr){
-			if (attr.match('_on')){
-				return attr.replace('_on.png','_off.png');
+<script type="text/javascript">
+$(function(){
+
+	$('.btnList ul li a').each(function(){
+		$(this).bind('click', function(e){
+			if ($(this).parent().is('.on')){
+				$(this).parent().removeClass('on');
+				$(this).find('>img').attr('src',$(this).find('>img').attr('src').replace(/on\.png$/, 'off.png'));
 			} else {
-				return attr.replace('_off.png','_on.png');
+				$(this).parent().addClass('on');
+				$(this).find('>img').attr('src',$(this).find('>img').attr('src').replace(/off\.png$/, 'on.png'));
 			}
 		});
 	});
+
+});
+</script>
